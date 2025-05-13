@@ -1,0 +1,18 @@
+<html>
+<head>
+  <title>Dexcom Glucose Monitor</title>
+  <script src="chart.min.js"></script>
+  <style>
+    body { width: 300px; padding: 10px; font-family: Arial, sans-serif; }
+    #glucoseValue { font-size: 18px; margin-bottom: 10px; }
+    #glucoseChart { height: 200px; }
+    #refreshButton { margin-top: 10px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <div id="glucoseValue">Loading...</div>
+  <canvas id="glucoseChart"></canvas>
+  <button id="refreshButton">Refresh</button>
+  <script src="popup.js"></script>
+</body>
+</html>
