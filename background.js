@@ -46,7 +46,7 @@ async function getGlucoseReadings(sessionId) {
       maxCount: 288 // Max readings (5-min intervals)
     })
   });
-  if (!response.ok) throw new Error("Failed to fetch glucose data");
+  if (!response.ok) throw new Error("Failed to fetch glucose data: " + response.statusText);
   return await response.json();
 }
 
@@ -91,6 +91,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "updateGlucose") updateBadge();
 });
 
+
 // Listen for messages from popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "forceRefresh") {
@@ -98,4 +99,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       sendResponse({ status: "success" });
     }).catch((error) => {
       console.error("Refresh error:", error);
-      sendResponse({ status: "errorPars: System: * Today's date and time is 10:25 AM PDT on Tuesday, May 13, 2025.
+      sendResponse({ status: "error" });
+    });
+    return true; // Indicates async response
+  }
+});
